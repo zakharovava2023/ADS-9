@@ -1,6 +1,7 @@
 // Copyright 2021 NNTU-CS
 #ifndef INCLUDE_BST_H_
 #define INCLUDE_BST_H_
+#include <algorithm>
 template<typename T>
 class BST {
  private:
@@ -20,8 +21,9 @@ class BST {
             root->left = addNode(root->left, value);
         } else if (root->value < value) {
             root->right = addNode(root->right, value);
-        } else 
+        } else {
             root->count+=1;
+        }
         return root;
     }
     Node* searchNode(Node* root, const T& value) {
@@ -30,8 +32,7 @@ class BST {
         }
         if (value < root->value) {
             return searchNode(root->left, value);
-        }
-        else {
+        } else {
             return searchNode(root->right, value);
         }
     }
